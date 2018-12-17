@@ -1,0 +1,6 @@
+<a class="ui image label cell-specs" (click)="setMove()">
+  <span [ngSwitch]="whichPlayer">
+    <i *ngSwitchCase="1" class="huge green circle icon"></i>
+    <i *ngSwitchCase="2" class="huge red circle icon"></i>
+  </span>
+</a>

@@ -1,0 +1,11 @@
+.cell-specs {
+    width: 6em !important;
+    height: 6em;
+    border: black;
+    border-style: solid;
+    text-align: center;
+}
+
+.ui.image {
+    width: 6em !important;
+}
