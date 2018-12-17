@@ -45,6 +45,9 @@ this.boardObs$.subscribe(board => {
 
 The biggest challenge I faced was thinking in the context of the redux store. As an angular engineer, angular never really needed redux/flux like state control simply because angular has so many event bindings. The common pattern in angular for state changes is to create a service which holds a `BehaviorSubject` and each component simply subscribs to this subject to watch for any necessary changes relevant to it (so it sort of acts like a store?). I can see how it can be useful in React (which how much little react I know) considering how lightweight react is.
 
+## Connect four in action
+![image of connect four](https://i.imgur.com/kmiKOM6.png)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
