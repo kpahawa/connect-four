@@ -45,6 +45,9 @@ this.boardObs$.subscribe(board => {
 
 The biggest challenge I faced was thinking in the context of the redux store. As an angular engineer, angular never really needed redux/flux like state control simply because angular has so many event bindings. The common pattern in angular for state changes is to create a service which holds a `BehaviorSubject` and each component simply subscribs to this subject to watch for any necessary changes relevant to it (so it sort of acts like a store?). I can see how it can be useful in React (which how much little react I know) considering how lightweight react is.
 
+## Connect four in action
+![image of connect four](https://i.imgur.com/kmiKOM6.png)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -57,14 +60,14 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Running unit tests (Pending)
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Running end-to-end tests (Pending)
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+## Angular CLI help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
