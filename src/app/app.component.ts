@@ -18,6 +18,9 @@ export class AppComponent {
   private currentBoard: number[][];
   private gameOver = false;
   private currentWinner: string = null;
+  private newGame = true;
+  private numRows = 5;
+  private numCols = 5;
 
   constructor(private ngRedux: NgRedux<IAppState>, private actions: BoardActions, private cdr: ChangeDetectorRef) {
     this.boardObs$.subscribe(board => {
@@ -30,6 +33,26 @@ export class AppComponent {
     const column = $event.column;
     this.ngRedux.dispatch(this.actions.placeToken(row, column));
     this.detectChanges();
+  }
+
+  private increment(type: string) {
+    if (type === 'row') {
+      this.numRows++;
+    } else {
+      this.numCols++;
+    }
+  }
+
+  private decrement(type: string) {
+    if (type === 'cols') {
+      if (this.numCols > 1) {
+        this.numCols++;
+      }
+    } else {
+      if (this.numRows > 1) {
+        this.numRows++;
+      }
+    }
   }
 
   private detectChanges() {
@@ -47,5 +70,11 @@ export class AppComponent {
   private resetGame() {
     this.ngRedux.dispatch(this.actions.resetGame());
     this.detectChanges();
+  }
+
+  private startGame() {
+    this.ngRedux.dispatch(this.actions.newGame(this.numRows, this.numCols));
+    this.detectChanges();
+    this.newGame = false;
   }
 }

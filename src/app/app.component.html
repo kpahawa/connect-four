@@ -1,22 +1,47 @@
 <div class="ui container">
   <div class="text-center">
-    <div class="ui centered grid" style="margin-top: 2em;" *ngIf="currentBoard">
-      <ng-container *ngFor="let a of currentBoard; let rowIdx = index">
-        <div class="row" style="padding-bottom: 0; padding-top: 0; margin-bottom: -.4em">
-          <app-cell-component *ngFor="let b of currentBoard[rowIdx]; let colIdx = index"
-                      [row]="currentBoard.length - rowIdx - 1"
-                      [column]="colIdx"
-                      [currentBoard]="currentBoard"
-                      class="column"
-                      (playerMove)="dispatchPlayerMove($event)" >
-          </app-cell-component> 
+    <div *ngIf="newGame; else currentGame">
+      <h2>Pick board size</h2>
+      <h3>Row:
+        <span>
+          <button class="ui button" (click)="decrement('row')">-</button>
+            {{numRows}}
+          <button class="ui button" (click)="increment('row')">+</button>
+        </span>
+      </h3>
+      <h3>Columns:
+          <span>
+            <button class="ui button" (click)="decrement('cols')">-</button>
+              {{numCols}}
+            <button class="ui button" (click)="increment('cols')">+</button>
+          </span>
+        </h3>
+      <button class="ui green button" (click)="startGame()">Start game</button>
+    </div>
+    <ng-template #currentGame>
+      <div class="ui centered grid" style="margin-top: 2em;" *ngIf="currentBoard">
+          <ng-container *ngFor="let a of currentBoard; let rowIdx = index">
+            <div class="row" style="padding-bottom: 0; padding-top: 0; margin-bottom: -.4em">
+              <app-cell-component *ngFor="let b of currentBoard[rowIdx]; let colIdx = index"
+                          [row]="currentBoard.length - rowIdx - 1"
+                          [column]="colIdx"
+                          [currentBoard]="currentBoard"
+                          class="column"
+                          (playerMove)="dispatchPlayerMove($event)" >
+              </app-cell-component> 
+            </div>
+          </ng-container>
         </div>
-      </ng-container>
-    </div>
-    <!-- The async flag doesnt work for some reason... <div *ngIf="gameStatusObs$ | async"> -->
-     <div *ngIf="gameOver" class="ui container" style="margin-top: 2em"> 
-      <h2>GAME OVER! Winner is {{currentWinner}}</h2>
-    </div>
-    <button class="ui blue button" style="margin-top: 2em" (click)="resetGame()"> Reset Game</button>
+        <!-- The async flag doesnt work for some reason... <div *ngIf="gameStatusObs$ | async"> -->
+          <div *ngIf="gameOver" class="ui container" style="margin-top: 2em"> 
+          <h2>GAME OVER! Winner is {{currentWinner}}</h2>
+        </div>
+        <div class="ui container">
+          <button class="ui blue button" style="margin-top: 2em" (click)="resetGame()"> Reset Game</button>
+          <button class="ui blue button" style="margin-top: 2em" (click)="newGame = !newGame"> Reset Board Size</button>
+        </div>
+    </ng-template>
+    
+    
   </div>
 </div>
